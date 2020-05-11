@@ -20,9 +20,9 @@ function usage()
     echo '    -u user:group         default: NONE'
     echo 'Example:'
     echo "    sudo sh `basename $0` -b /apps/srv/instance -s backend -u admin:admin app1 app2 app3"
-    echo '    \033[32mCREATED\033[0m: /apps/srv/instance/app1/backend'
-    echo '    \033[33mEXIST\033[0m:   /apps/srv/instance/app2/backend'
-    echo '    \033[31mFAILED\033[0m:  /apps/srv/instance/app3/backend'
+    echo -e '    \033[32mCREATED\033[0m: /apps/srv/instance/app1/backend'
+    echo -e '    \033[33mEXIST\033[0m:   /apps/srv/instance/app2/backend'
+    echo -e '    \033[31mFAILED\033[0m:  /apps/srv/instance/app3/backend'
     exit 1;
 }
 
@@ -57,7 +57,7 @@ function create()
         # 判断目录是否存在
         if [[ -e ${APP_DIR} ]];
         then
-            echo "\033[33mEXIST\033[0m:   $APP_DIR"
+            echo -e "\033[33mEXIST\033[0m:   $APP_DIR"
         else
             # 不存在则创建
             mkdir -p $APP_DIR
@@ -70,9 +70,9 @@ function create()
             # 判断创建是否成功
             if [[ -e ${APP_DIR} ]];
             then
-                echo "\033[32mCREATED\033[0m: $APP_DIR"
+                echo -e "\033[32mCREATED\033[0m: $APP_DIR"
             else
-                echo "\033[31mFAILED\033[0m:  $APP_DIR"
+                echo -e "\033[31mFAILED\033[0m:  $APP_DIR"
             fi
         fi
     done
